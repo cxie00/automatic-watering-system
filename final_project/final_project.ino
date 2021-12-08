@@ -6,7 +6,6 @@ Adafruit_SSD1306 lcd(128, 64); // create display object
 #define PIN 25
 #define OUTPIN A5
 #define ringshow_noglitch() {delay(1);ring.show();delay(1);ring.show();}
-#define TRIG A4
 Adafruit_NeoPixel ring = Adafruit_NeoPixel(16, PIN, NEO_GRB + NEO_KHZ800);
 // FOR DISTANCE SENSOR
 #define TRIG 5
@@ -61,13 +60,10 @@ void loop() {
     }
     lcd.clearDisplay();
     lcd.setCursor(0, 0);
-    // lcd.print("reading: ");
-    // lcd.print(value / 500.00);
-    // lcd.println(analogRead(SENSOR));
     lcd.print("Avg: "); 
     lcd.println(avg);
-    // DISTANCE SENSOR
     
+    // DISTANCE SENSOR
     lcd.print("Water lvl:");
     lcd.println(dist);
     if (dist > 20) {
@@ -82,9 +78,6 @@ void loop() {
     count = 0;
     sum = 0; 
   } else {
-//    lcd.setCursor(0, 0);
-//    lcd.print("else");
-//    lcd.display();
     sum  += analogRead(SENSOR);
     count++;
   }
@@ -115,6 +108,7 @@ float readDistance() {
   return lapse*0.01716f;
 }
 
+// easter egg - smash bros. ultimate theme
 void song() {
   ledcWriteTone(0,330);//E4 
   delay(310); 
